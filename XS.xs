@@ -7,6 +7,7 @@
 #include "src/yuarel.c"
 
 
+#define ERR_PREFIX        "[IURL_ERROR]"
 #define MAX_URL_LENGTH    1024
 #define MAX_PATH_ELEMENTS 256
 #define MAX_QUERY_PARAMS  256
@@ -24,12 +25,12 @@ CODE:
     char *_url = SvPV(src_url, url_len);
 
     if (url_len > MAX_URL_LENGTH)
-        Perl_croak(aTHX_ "[IURL_ERROR]: url too long (max %d symbols)", MAX_URL_LENGTH);
+        Perl_croak(aTHX_ "%s: url too long (max %d symbols)", ERR_PREFIX, MAX_URL_LENGTH);
 
     strcpy(url, _url);
 
     if (yuarel_parse(&y, url) == -1)
-        Perl_croak(aTHX_ "[IURL_ERROR]: Could not parse url: %s", url);
+        Perl_croak(aTHX_ "%s: Could not parse url: %s", ERR_PREFIX, url);
 
     hv_store(result, "scheme", 6, newSVpv(y.scheme, strlen(y.scheme)), 0);
     hv_store(result, "host",   4, newSVpv(y.host,   strlen(y.host)  ), 0);
@@ -53,7 +54,7 @@ CODE:
         hv_store(result, "fragment", 8, newSVpv(y.fragment, strlen(y.fragment)), 0);
     }
 
-    RETVAL = newRV_inc((SV*) result);
+    RETVAL = newRV_noinc((SV*) result);
 OUTPUT:
     RETVAL
 
@@ -63,9 +64,9 @@ SV* split_path(url_path, max_paths)
     unsigned short max_paths
 INIT:
     if (max_paths > MAX_PATH_ELEMENTS)
-        Perl_croak(aTHX_ "[IURL_ERROR]: max_paths too much (max 256)");
+        Perl_croak(aTHX_ "%s: max_paths too much (max 256)", ERR_PREFIX);
     if (max_paths == 0)
-        Perl_croak(aTHX_ "[IURL_ERROR]: max_paths must be a positive short integer (from 1 to 256)");
+        Perl_croak(aTHX_ "%s: max_paths must be a positive integer (from 1 to 256)", ERR_PREFIX);
 CODE:
     AV *result = newAV();
     char *paths[max_paths];
@@ -77,7 +78,7 @@ CODE:
     for(int i=0; i <= p; i++)
         av_push(result, newSVpv(paths[i], strlen(paths[i])));
 
-    RETVAL = newRV_inc((SV*) result);
+    RETVAL = newRV_noinc((SV*) result);
 OUTPUT:
     RETVAL
 
@@ -105,6 +106,6 @@ CODE:
         hv_store(result, k, strlen(k), newSVpv(v, strlen(v)), 0);
     }
 
-    RETVAL = newRV_inc((SV*) result);
+    RETVAL = newRV_noinc((SV*) result);
 OUTPUT:
     RETVAL
