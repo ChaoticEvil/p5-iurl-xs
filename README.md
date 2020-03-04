@@ -19,15 +19,6 @@ Required Perl >= v5.24.0
 
 ## Installation
 
-### MacOS prepare installation
-
-```
-$ brew cask install xquartz
-$ brew install imlib2
-```
-
-### Manual installation
-
 To manual install this module type the following (may be you need root/sudo permission to install into the system):
 
 ```
@@ -65,4 +56,9 @@ my $parsed_url = IURL::XS::parse_url($url);
 
 ## CopyRight and license
 
-...
+The MIT License (MIT)
+
+Copyright (c) 2020 Peter P. Neuromantic \<p.brovchenko@protonmail.com\>.\
+All rights reserved.
+
+See LICENSE file for more information.
