@@ -12,10 +12,11 @@
 #define MAX_PATH_ELEMENTS 256
 #define MAX_QUERY_PARAMS  256
 
+
 MODULE = IURL::XS		PACKAGE = IURL::XS
 PROTOTYPES: DISABLE
 
-SV* parse(SV *src_url)
+SV* parse_url(SV *src_url)
 PREINIT:
     struct yuarel y;
     unsigned long url_len;
@@ -59,7 +60,7 @@ OUTPUT:
     RETVAL
 
 
-SV* split_path(url_path, max_paths)
+SV* split_url_path(url_path, max_paths)
     char *url_path
     unsigned short max_paths
 INIT:
@@ -83,7 +84,7 @@ OUTPUT:
     RETVAL
 
 
-SV* parse_query(url_query, ...)
+SV* parse_url_query(url_query, ...)
     char *url_query
 PREINIT:
     char *sep = "&";
