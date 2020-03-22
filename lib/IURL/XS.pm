@@ -31,7 +31,7 @@ Might parse url, url paths and url queries.
 
   use IRUL::XS (parse_url split_url_path parse_url_query);
 
-  my $url = 'http://localhost:8989/path/to/test?q1=yes&q2=no&q3=maybe#frag=1';
+  my $url = 'http://localhost:8989/some/path/to/resource?q1=yes&q2=no&q3=maybe#frag=1';
 
   # Basic parse
   my $parsed_url = parse_url($url);
@@ -42,7 +42,7 @@ Might parse url, url paths and url queries.
   #  'scheme' => 'http',
   #  'host' => 'localhost',
   #  'port' => 8989,
-  #  'path' => 'some/path/to/resourse',
+  #  'path' => 'some/path/to/resource',
   #  'query' => 'q1=yes&q2=no&q3=maybe',
   #  'fragment' => 'frag=1'
   # };
