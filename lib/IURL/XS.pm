@@ -5,7 +5,7 @@ use strict;
 use warnings;
 
 use base 'Exporter';
-our @EXPORT_OK = qw(parse_url);
+our @EXPORT_OK = qw(parse_url split_url_path parse_url_query);
 
 our $VERSION = '0.9.0';
 
@@ -47,7 +47,7 @@ Might parse url, url paths and url queries.
   #  'fragment' => 'frag=1'
   # };
 
-  # Parse url path part
+  # Parse relative url path
   my $url_path = split_url_path($parsed_url->{path});
 
   say Dumper $url_path;
@@ -77,15 +77,15 @@ Returns hasref with parsed url data.
 
 =head2 split_url_path($url_path, [$split_separator])
 
-Split URL path (with optionally separator) with '/' path separatoe by default.
+Split relative url path (with optionally separator) with '/' path separatoe by default.
 
-Returns arrayeref with splitted url path.
+Returns arrayeref with splitted relative url path.
 
 =head2 parse_url_query($url_query, [$query_separator])
 
 Parse URL query part (with optionally separator). Symbol '&' is a default query separator.
 
-Returns hashref with parsed queries.
+Returns hashref with parsed query.
 
 =head1 SEE ALSO
 
