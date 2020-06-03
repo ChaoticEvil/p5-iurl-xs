@@ -2,7 +2,7 @@
 
 IURL::XS - perl binding to libyaurel (simple C library for parsing URLs with zero-copy and no mallocs).
 
-# Motivation
+## Motivation
 
 I've not found in the CPAN repository a small, fast and simple library for parsing url.
 
