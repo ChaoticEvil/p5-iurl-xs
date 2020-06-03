@@ -16,7 +16,7 @@ script:
   - make
   - make install
   - make test
-  - perl -MTest::More -MTest::Pod::Coverage -e "pod_coverage_ok('Ithumb::XS','Ithumb::XS is covered');done_testing();"
+  - perl -MTest::More -MTest::Pod::Coverage -e "pod_coverage_ok('IURL::XS','IURL::XS is covered');done_testing();"
   - PERL5OPT=-MDevel::Cover=-coverage,statement,branch,condition,path,subroutine prove -lrsv t
   - cover
 
