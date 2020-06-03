@@ -24,8 +24,8 @@ IURL::XS - parsing URLs with zero-copy and no mallocs
 
 =head1 DESCRIPTION
 
-IURL::XS - perl binding to libyaurel (compact C library for parsing URLs).
-Might parse url, url paths and url queries.
+This is a perl binding to libyaurel (simple C library for parsing URLs with zero-copy and no mallocs).
+Might parse: url, url paths and url queries.
 
 =head1 SYNOPSIS
 
@@ -54,7 +54,7 @@ Might parse url, url paths and url queries.
 
   # $VAR1 = [ 'some', 'path', 'to', 'resource' ];
 
-  # Parse url query part
+  # Parse url query
   my $url_queries = parse_url_query($parsed_url->{query});
 
   say Dumper $url_queries;
