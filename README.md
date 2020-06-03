@@ -1,5 +1,7 @@
 # IURL::XS
 
+[![Build Status](https://travis-ci.com/ChaoticEvil/p5-iurl-xs.svg?branch=master)](https://travis-ci.com/ChaoticEvil/p5-iurl-xs)
+
 IURL::XS - perl binding to libyaurel (simple C library for parsing URLs with zero-copy and no mallocs).
 
 ## Motivation
