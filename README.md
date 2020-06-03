@@ -4,7 +4,14 @@ IURL::XS - perl binding to libyaurel (simple C library for parsing URLs with zer
 
 # Motivation
 
-...
+I've not found in the CPAN repository a small, fast and simple library for parsing url.
+
+The closest to my requirements was the library URI::XS from "Crazy Panda LTD". However, this package contains too much boilerplate code in the src/panda/*.
+
+Therefore, I developd my implementation, which is a simple binding to the libyaurel library. As a result, we have one C-file (libyaurel library itself) and XS-code of three functions. IURL::XS does nothing but url's direct parsing, but does it fast and robust.
+
+This is how fast can it be estimated from the following summary table (measurements were taken on my laptop - MacBook Pro 2017 [i5 Dual-Core 2.3 GHz]):
+
 ```
               Rate Mojo::URL       URI   URI::XS  IURL::XS
 Mojo::URL  56296/s        --      -54%      -91%      -91%
@@ -22,7 +29,7 @@ Required Perl >= v5.24.0
 To manual install this module type the following (may be you need root/sudo permission to install into the system):
 
 ```
-$ git clone ...
+$ git clone git@github.com:ChaoticEvil/p5-iurl-xs.git
 $ cd p5-iurl-xs/
 $ perl Makefile.PL
 $ make
@@ -41,8 +48,8 @@ $ cpan -i IURL::XS
 ### From shell (as one-liner)
 
 ```
-$ perl -MIURL::XS=parse_url -MData::Dumper -e \
-    "print Dumper parse_url('http://localhost:8989/path/to/test?query=yes#frag=1')"
+perl -MIURL::XS=parse_url -MData::Dumper -E \
+    "say Dumper parse_url('http://localhost:8989/path/to/test?query=yes#frag=1')"
 ```
 
 ### From perl code
