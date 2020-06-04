@@ -1,6 +1,7 @@
 # IURL::XS
 
 [![Build Status](https://travis-ci.com/ChaoticEvil/p5-iurl-xs.svg?branch=master)](https://travis-ci.com/ChaoticEvil/p5-iurl-xs)
+[![Coverage Status](https://coveralls.io/repos/github/ChaoticEvil/p5-iurl-xs/badge.svg?branch=master)](https://coveralls.io/github/ChaoticEvil/p5-iurl-xs?branch=master)
 
 IURL::XS - perl binding to libyaurel (simple C library for parsing URLs with zero-copy and no mallocs).
 
