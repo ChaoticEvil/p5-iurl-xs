@@ -84,12 +84,17 @@ subtest 'parse_url with credentials' => sub {
     # is $r->{fragment}, 'frag=f1', 'url fragment is expected';
 };
 
-	# /* With port and path */
-	# url_string = strdup("http://example.com:8080/port/and/path");
-	# rc = yuarel_parse(&url, url_string);
-	# mu_assert("with port and path", -1 != rc);
-	# assert_struct(url, "http", NULL, NULL, "example.com", 8080, "port/and/path", NULL, NULL);
-	# free(url_string);
+subtest 'parse_url with port and path' => sub {
+    my $r = IURL::XS::parse_url('http://example.com:8080/port/and/path');
+    ok $r, 'parse_url with credentials only ok';
+    my $expected_url_fields = [sort qw/scheme host port path query fragment/];
+    is_deeply [sort keys %$r], $expected_url_fields, 'parsed url fields expected';
+    ok !$r->{$_}, "no $_" for qw/query fragment/;
+    is $r->{scheme}, 'http', 'url scheme is http';
+    is $r->{host}, 'example.com', 'url host is example.com';
+    cmp_ok $r->{port}, '==', 8080, 'port is expected';
+    is $r->{path}, 'port/and/path', 'url path is expected';
+};
 
 	# /* With port and query */
 	# url_string = strdup("http://example.com:8080?query=portANDquery");
