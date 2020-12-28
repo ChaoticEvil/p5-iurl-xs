@@ -1,6 +1,6 @@
 Revision history for Perl extension IURL::XS.
 
-v0.9.0 2020-06-06
+v0.9.0 2020-12-28
     - First release.
       Added main functionality: parse_url, split_url_path, parse_url_query.
       Added tests, benchmarks, docs and Travis CI scenario.

@@ -6,7 +6,6 @@
 #include <string.h>
 #include "src/yuarel.c"
 
-
 #define ERR_PREFIX        "[IURL_ERROR]"
 #define MAX_URL_LENGTH    1024
 #define MAX_PATH_ELEMENTS 256
@@ -101,9 +100,11 @@ CODE:
     if (q > 0)
         q--;
 
+    char *k, *v;
+
     for (int i=0; i <= q; i++) {
-        char *k = params[i].key;
-        char *v = params[i].val;
+        k = params[i].key;
+        v = params[i].val;
         hv_store(result, k, strlen(k), newSVpv(v, strlen(v)), 0);
     }
 
