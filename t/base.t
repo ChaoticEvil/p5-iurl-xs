@@ -5,8 +5,6 @@ use Test::More 'no_plan';
 
 BEGIN { use_ok('IURL::XS'); };
 
-use Data::Dumper; # TODO: remove after debugging
-
 can_ok('IURL::XS', 'parse_url', 'split_url_path', 'parse_url_query');
 
 subtest 'parse_url with minimal url' => sub {
